@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="About Rayden" />
+    <meta name="keywords" content="rayden, about me, bio" />
+    <title>about rayden</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      }
+      .animate-pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: .5;
+        }
+      }
+      
+      .page-selector-container {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 10; 
+      }
+      .page-selector {
+        background-color: #374151; 
+        color: #D1D5DB; 
+        border: 1px solid #4B5563; 
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        appearance: none; 
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        cursor: pointer;
+      }
+      .page-selector:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.5); 
+      }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen bg-gray-900 text-gray-100 flex flex-col items-center justify-center p-4">
+      <div class="page-selector-container">
+        <label for="page-selector" class="sr-only">Navigate To:</label>
+        <select
+          id="page-selector"
+          onchange="window.location.href=this.value"
+          class="page-selector"
+        >
+          <option value="">Select a Page</option>
+                <option value="index.html">Home</option>
+                <option value="GamesImStaffIn.html">Games Im Staff In</option>
+                <option value="AboutMe.html">About Me(current)</option>
+                <option value="tutorials.html">Tutorials</option>
+                <option value="quotes.html">Quotes</option>
+                <option value="PingPong.html">PingPong</option>
+                <option value="thingoftheday.html">thing of the day</option>
+                <option value="things-i-miss.html">Things I Miss</option>
+                <option value="updates.html">Updates</option>
+        </select>
+      </div>
+      <div class="bg-gray-800 rounded-3xl shadow-2xl p-8 md:p-10 max-w-md w-full flex flex-col items-center text-center space-y-6 transform transition-all duration-300 hover:scale-105">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+          About Me
+        </h1>
+        <p class="text-lg md:text-xl text-gray-300 max-w-prose">
+          hello im rayden a person who knows apk method and a content creator, i came back to gorilla tag copies and the whole community because i got bored and hopped on gorilla tag, i actually had fun, then i wanted to do copies, i had owned a game before it was called gorilla madness the tiktok is still up @gorillamadnessvr, im not making games or applabs for u unless i know u so thats all idk what to add to this vercel link, anyway goodbye.
+        </p>
+        </div>
+      <footer class="mt-8 text-gray-400 text-sm">
+        built by 𖣂rayden𖣂, ©RAYDEN
+      </footer>
+    </div>
+    <script src="https://static.devv.ai/devv-app.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Rayden's Personal Bio Profile - Updates" />
+    <meta name="keywords" content="rayden, profile, bio, updates, changelog" />
+    <title>updates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      }
+      .animate-pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: .5;
+        }
+      }
+      
+      .page-selector-container {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 10;
+      }
+      .page-selector {
+        background-color: #374151;
+        color: #D1D5DB;
+        border: 1px solid #4B5563;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        cursor: pointer;
+      }
+      .page-selector:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen bg-gray-900 text-gray-100 flex flex-col items-center p-4">
+      <div class="page-selector-container">
+        <label for="page-selector" class="sr-only">Navigate To:</label>
+        <select
+          id="page-selector"
+          onchange="window.location.href=this.value"
+          class="page-selector"
+        >
+          <option value="">Select a Page</option>
+            <option value="index.html">Home</option>
+            <option value="GamesImStaffIn.html">Games Im Staff In</option>
+            <option value="AboutMe.html">About Me</option>
+            <option value="tutorials.html">Tutorials</option>
+            <option value="quotes.html">Quotes</option>
+            <option value="PingPong.html">PingPong</option>
+            <option value="thingoftheday.html">thing of the day</option>
+            <option value="things-i-miss.html">Things I Miss</option>
+            <option value="updates.html" selected>Updates (current)</option>
+        </select>
+      </div>
+
+      <div class="bg-gray-800 rounded-3xl shadow-2xl p-8 md:p-10 max-w-2xl w-full flex flex-col items-center text-center transform transition-all duration-300 hover:scale-105 mt-16 mb-8">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-8">
+          upd log
+        </h1>
+
+        <div class="w-full text-left space-y-6">
+          <!-- ADD NEW UPDATES HERE -->
+          <div class="bg-gray-700 p-6 rounded-2xl shadow-inner">
+            <h2 class="text-xl font-bold text-white">august 8, 2025, 9:51 est</h2>
+            <p class="text-gray-300 mt-2">
+              added upd logs
+
+            </p>
+          </div>
+          <!-- END OF NEW UPDATES -->
+        </div>
+      </div>
+
+      <footer class="mt-8 text-gray-400 text-sm">
+        built by 𖣂rayden𖣂, ©RAYDEN
+      </footer>
+    </div>
+  </body>
+</html>

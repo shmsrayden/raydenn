@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+ empezó" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Rayden's Tutorials" />
+    <meta name="keywords" content="rayden, tutorials, guide, how-to" />
+    <title>tutorials</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      }
+      .animate-pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: .5;
+        }
+      }
+      
+      .page-selector-container {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 10; 
+      }
+      .page-selector {
+        background-color: #374151; 
+        color: #D1D5DB; 
+        border: 1px solid #4B5563; 
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        appearance: none; 
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        cursor: pointer;
+      }
+      .page-selector:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.5); 
+      }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen bg-gray-900 text-gray-100 flex flex-col items-center justify-center p-4">
+      <div class="page-selector-container">
+        <label for="page-selector" class="sr-only">Navigate To:</label>
+        <select
+          id="page-selector"
+          onchange="window.location.href=this.value"
+          class="page-selector"
+        >
+          <option value="">Select a Page</option>
+                <option value="index.html">Home</option>
+                <option value="GamesImStaffIn.html">Games Im Staff In</option>
+                <option value="AboutMe.html">About Me</option>
+                <option value="tutorials.html">Tutorials (current)</option>
+                <option value="quotes.html">Quotes</option>
+                <option value="PingPong.html">PingPong</option>
+                <option value="thingoftheday.html">thing of the day</option>
+                <option value="things-i-miss.html">Things I Miss</option>
+                <option value="updates.html">Updates</option>
+        </select>
+      </div>
+      <div class="bg-gray-800 rounded-3xl shadow-2xl p-8 md:p-10 max-w-md w-full flex flex-col items-center text-center space-y-6 transform transition-all duration-300 hover:scale-105">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+          Tutorials
+        </h1>
+        <p class="text-lg md:text-xl text-gray-300 max-w-prose">
+          tuts n shit
+        </p>
+
+        
+        <div class="flex flex-col space-y-4 w-full max-w-xs">
+          <a
+            href="https://youtu.be/XKYSeDuikoA?si=yeFaDetW2bBkOW1j"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center space-x-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><path d="m10 15 5-3-5-3z"></path></svg>
+            <span>How to setup backend in Vercel</span>
+          </a>
+
+          <a
+            href="https://youtu.be/u_8tSQ6_R2A?si=7wFaUvFywP7-bsrx"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center space-x-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><path d="m10 15 5-3-5-3z"></path></svg>
+            <span>APK Method Tutorial 2023 to Early 2025</span>
+          </a>
+
+          <a
+            href="https://youtu.be/6imAZqATtHM?si=23kFuzh-vb81XYU"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center space-x-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><path d="m10 15 5-3-5-3z"></path></svg>
+            <span>How to setup PlayFab</span>
+          </a>
+        </div>
+
+        
+        <div class="w-full mt-6 pt-6 border-t border-gray-700">
+          <h2 class="text-2xl font-bold text-white mb-4">Join these APK Method Servers</h2>
+          <div class="flex flex-col space-y-2">
+            <a
+              href="https://discord.gg/uM6RKBYuem"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-blue-400 hover:text-blue-300 transition-colors duration-200"
+            >
+              apk method land
+            </a>
+            <a
+              href="https://discord.gg/5ASgSdQpw7"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-blue-400 hover:text-blue-300 transition-colors duration-200"
+            >
+              depressos apk
+            </a>
+            <a
+              href="https://discord.gg/z87wjpSuC4"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-blue-400 hover:text-blue-300 transition-colors duration-200"
+            >
+              gtag versions
+            </a>
+          </div>
+        </div>
+      </div>
+      <footer class="mt-8 text-gray-400 text-sm">
+        built by 𖣂rayden𖣂, ©RAYDEN
+      </footer>
+    </div>
+    <script src="https://static.devv.ai/devv-app.js" type="module"></script>
+  </body>
+</html>

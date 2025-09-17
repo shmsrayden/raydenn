@@ -1,0 +1,435 @@
+<!----yes this is ai---->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bunssss ping pong</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #000;
+            margin: 0;
+            font-family: monospace;
+            color: #fff;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        #gameCanvas {
+            background-color: #000;
+            border: 2px solid #fff;
+            display: none; /* Hide initially */
+            position: relative; /* For positioning the buttons */
+        }
+
+        #menu, #settingsMenu {
+            text-align: center;
+        }
+
+        #menu h1, #settingsMenu h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        #menu button, #menu select, #menu label, #settingsMenu button, #settingsMenu select, #settingsMenu label {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #backButton, #resetButton, #resetBallButton {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            display: none; /* Hidden by default */
+        }
+
+        #backButton {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        #resetButton {
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #resetBallButton {
+            top: 10px;
+            right: 10px;
+        }
+
+        #popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 20px;
+            display: none;
+            z-index: 10;
+        }
+
+        #settingsMenu {
+            display: none;
+        }
+
+        /* Styles for the select page dropdown */
+        #selectPageContainer {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 20;
+            /* Changed to 'none' here so it can be controlled by JS for specific pages */
+            display: none; 
+        }
+
+        #selectPageContainer select, #selectPageContainer button {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 5px 10px;
+            margin-right: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="menu">
+        <h1>Ping Pong By Rayden</h1>
+        <button onclick="startGame(false)">Multiplayer</button>
+        <button onclick="startSinglePlayerGame()">Single Player</button>
+        <div>
+            <button onclick="showSettingsMenu()">Settings</button>
+        </div>
+    </div>
+
+    <div id="settingsMenu">
+        <h2>Settings</h2>
+        <div>
+            <label for="difficulty">Single Player Difficulty:</label>
+            <select id="difficulty">
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+            </select>
+        </div>
+        <div>
+            <label for="ballSpeedIncrease">Ball Speed Increase per Hit:</label>
+            <select id="ballSpeedIncrease">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+        <button onclick="showMenu()">Back to Menu</button>
+    </div>
+
+    <canvas id="gameCanvas" width="600" height="400"></canvas>
+    <button id="backButton" onclick="showMenu()">Back to Menu</button>
+    <button id="resetButton" onclick="resetScore()">Reset Score</button>
+    <button id="resetBallButton" onclick="resetBall()">Reset Ball</button>
+
+    <div id="selectPageContainer">
+        <select id="pageSelector">
+                <option value="index.html">Home</option>
+                <option value="GamesImStaffIn.html">Games Im Staff In</option>
+                <option value="AboutMe.html">About Me</option>
+                <option value="tutorials.html">Tutorials</option>
+                <option value="quotes.html">Quotes</option>
+                <option value="PingPong.html">PingPong(current)</option>
+                <option value="thingoftheday.html">thing of the day</option>
+                <option value="things-i-miss.html">Things I Miss</option>
+                <option value="updates.html">Updates</option>
+        </select>
+        <button onclick="goToSelectedPage()">Go to Page</button>
+    </div>
+
+    <div id="popup"></div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const menu = document.getElementById('menu');
+        const settingsMenu = document.getElementById('settingsMenu');
+        const difficultySelect = document.getElementById('difficulty');
+        const backButton = document.getElementById('backButton');
+        const resetButton = document.getElementById('resetButton');
+        const resetBallButton = document.getElementById('resetBallButton');
+        const popup = document.getElementById('popup');
+        const ballSpeedIncreaseSelect = document.getElementById('ballSpeedIncrease');
+        const selectPageContainer = document.getElementById('selectPageContainer');
+        const pageSelector = document.getElementById('pageSelector');
+
+        // Paddle properties
+        const paddleHeight = 100;
+        const paddleWidth = 10;
+        let leftPaddleY = canvas.height / 2 - paddleHeight / 2;
+        let rightPaddleY = canvas.height / 2 - paddleHeight / 2;
+        const paddleSpeed = 10;
+
+        // Ball properties
+        let ballX = canvas.width / 2;
+        let ballY = canvas.height / 2;
+        let ballSize = 10;
+        let ballSpeedX = 5;
+        let ballSpeedY = 5;
+        let initialBallSpeed = 5;
+        let speedIncreaseRate = 1.05; // Slightly reduced the speed increase for more manageable gameplay
+
+        // Scores
+        let leftScore = 0;
+        let rightScore = 0;
+
+        // Keyboard input
+        let upPressed = false;
+        let downPressed = false;
+        let wPressed = false;
+        let sPressed = false;
+
+        // Game mode
+        let singlePlayer = false;
+        let aiSpeed = 2;
+        let gameLoopInterval;
+
+        document.addEventListener('keydown', (e) => {
+            if (!singlePlayer) {
+                if (e.key === 'w') wPressed = true;
+                if (e.key === 's') sPressed = true;
+            }
+            if (e.key === 'ArrowUp') {
+                upPressed = true;
+                e.preventDefault();
+            }
+            if (e.key === 'ArrowDown') {
+                downPressed = true;
+                e.preventDefault();
+            }
+        });
+
+        document.addEventListener('keyup', (e) => {
+            if (!singlePlayer) {
+                if (e.key === 'w') wPressed = false;
+                if (e.key === 's') sPressed = false;
+            }
+            if (e.key === 'ArrowUp') {
+                upPressed = false;
+            }
+            if (e.key === 'ArrowDown') {
+                downPressed = false;
+            }
+        });
+
+        // Game logic
+        function update() {
+            // Move paddles
+            if (!singlePlayer) {
+                if (wPressed && leftPaddleY > 0) leftPaddleY -= paddleSpeed;
+                if (sPressed && leftPaddleY < canvas.height - paddleHeight) leftPaddleY += paddleSpeed;
+            } else {
+                // AI for left paddle
+                let aiDumbness = 1;
+                if (difficultySelect.value === 'beginner') {
+                    aiDumbness = 3;
+                }
+                if (ballY < leftPaddleY + paddleHeight / 2 - 20) {
+                    leftPaddleY -= aiSpeed / aiDumbness;
+                } else if (ballY > leftPaddleY + paddleHeight / 2 + 20) {
+                    leftPaddleY += aiSpeed / aiDumbness;
+                }
+                leftPaddleY = Math.max(0, Math.min(leftPaddleY, canvas.height - paddleHeight));
+            }
+            if (upPressed && rightPaddleY > 0) rightPaddleY -= paddleSpeed;
+            if (downPressed && rightPaddleY < canvas.height - paddleHeight) rightPaddleY += paddleSpeed;
+
+            // Move ball
+            ballX += ballSpeedX;
+            ballY += ballSpeedY;
+
+            // Ball collision with top and bottom walls
+            if (ballY + ballSize > canvas.height || ballY - ballSize < 0) {
+                ballSpeedY = -ballSpeedY;
+            }
+
+            // Ball collision with paddles (Realistic Physics)
+            if (ballX - ballSize < paddleWidth && ballY > leftPaddleY && ballY < leftPaddleY + paddleHeight) {
+                handlePaddleHit(true);
+            } else if (ballX + ballSize > canvas.width - paddleWidth && ballY > rightPaddleY && ballY < rightPaddleY + paddleHeight) {
+                handlePaddleHit(false);
+            }
+
+            // Score update
+            if (ballX < 0) {
+                rightScore++;
+                showPopup(singlePlayer ? "Player got a point!" : "Player Two got a point!");
+                resetBall();
+            }
+            if (ballX > canvas.width) {
+                leftScore++;
+                showPopup(singlePlayer ? "Bot got a point!" : "Player One got a point!");
+                resetBall();
+            }
+        }
+
+        function handlePaddleHit(isLeft) {
+            // Calculate relative intersect
+            let paddleY = isLeft ? leftPaddleY : rightPaddleY;
+            let intersectY = ballY - (paddleY + paddleHeight / 2);
+            let normalizedIntersectY = intersectY / (paddleHeight / 2);
+
+            // Calculate bounce angle
+            let bounceAngle = normalizedIntersectY * Math.PI / 3;
+
+            // Get current ball speed magnitude
+            let currentSpeedMagnitude = Math.sqrt(ballSpeedX * ballSpeedX + ballSpeedY * ballSpeedY);
+
+            // Update ball speed with new angle and potentially increased speed
+            let newSpeed = currentSpeedMagnitude;
+            if (ballSpeedIncreaseSelect.value === 'true') {
+                newSpeed *= speedIncreaseRate;
+            }
+            
+            ballSpeedX = Math.cos(bounceAngle) * newSpeed;
+            ballSpeedY = Math.sin(bounceAngle) * newSpeed;
+
+            // Adjust direction based on which paddle was hit
+            ballSpeedX = isLeft ? Math.abs(ballSpeedX) : -Math.abs(ballSpeedX);
+        }
+
+        function resetBall() {
+            ballX = canvas.width / 2;
+            ballY = canvas.height / 2;
+
+            // Randomize ball direction with an angle, ensuring it doesn't go straight up/down
+            let angle;
+            do {
+                angle = Math.random() * Math.PI * 2;
+                ballSpeedX = Math.cos(angle);
+                ballSpeedY = Math.sin(angle);
+            } while (Math.abs(ballSpeedX) < 0.2 || Math.abs(ballSpeedY) < 0.2); // Ensure a reasonable horizontal/vertical component
+
+            // Apply initial speed
+            ballSpeedX *= initialBallSpeed;
+            ballSpeedY *= initialBallSpeed;
+        }
+
+        // Render the game
+        function draw() {
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw paddles
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(0, leftPaddleY, paddleWidth, paddleHeight);
+            ctx.fillRect(canvas.width - paddleWidth, rightPaddleY, paddleWidth, paddleHeight);
+
+            // Draw ball
+            ctx.beginPath();
+            ctx.arc(ballX, ballY, ballSize, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Draw scores
+            ctx.font = '20px monospace';
+            ctx.fillText(leftScore, 100, 30);
+            ctx.fillText(rightScore, canvas.width - 100, 30);
+        }
+
+        // Main game loop
+        function gameLoop() {
+            update();
+            draw();
+            gameLoopInterval = requestAnimationFrame(gameLoop);
+        }
+
+        function startGame(isSinglePlayer) {
+            singlePlayer = isSinglePlayer;
+            canvas.style.display = 'block';
+            backButton.style.display = 'block';
+            resetButton.style.display = 'block';
+            resetBallButton.style.display = 'block';
+            selectPageContainer.style.display = 'none'; // Hide page selector during game
+            menu.style.display = 'none';
+            settingsMenu.style.display = 'none';
+            ballSpeedX = initialBallSpeed;
+            ballSpeedY = initialBallSpeed;
+            resetBall();
+            gameLoop();
+        }
+
+        function startSinglePlayerGame() {
+            const difficulty = document.getElementById('difficulty').value;
+            switch (difficulty) {
+                case 'beginner':
+                    aiSpeed = 2;
+                    break;
+                case 'intermediate':
+                    aiSpeed = 5;
+                    break;
+                case 'advanced':
+                    aiSpeed = 8;
+                    break;
+            }
+            startGame(true);
+        }
+
+        function showMenu() {
+            canvas.style.display = 'none';
+            backButton.style.display = 'none';
+            resetButton.style.display = 'none';
+            resetBallButton.style.display = 'none';
+            selectPageContainer.style.display = 'block'; // Show page selector in menu
+            menu.style.display = 'block';
+            settingsMenu.style.display = 'none';
+            popup.style.display = 'none';
+            cancelAnimationFrame(gameLoopInterval);
+        }
+
+        function showSettingsMenu() {
+            menu.style.display = 'none';
+            settingsMenu.style.display = 'block';
+            selectPageContainer.style.display = 'block'; // Show page selector in settings
+        }
+
+        function resetScore() {
+            leftScore = 0;
+            rightScore = 0;
+        }
+
+        function showPopup(message) {
+            popup.textContent = message;
+            popup.style.display = 'block';
+
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);
+        }
+
+        function goToSelectedPage() {
+            const selectedPage = pageSelector.value;
+            window.location.href = selectedPage;
+        }
+
+        // Initialize the page selector's visibility when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            showMenu(); // Show the menu and page selector on load
+        });
+    </script>
+</body>
+</html>
