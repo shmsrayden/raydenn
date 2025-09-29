@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+ empezó" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="rayden" />
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/7b8RF4pt/fffe75d01e21abcf4e7321d3650f1454.png">
+    <meta name="keywords" content="rayden, profile, bio, youtube, discord, tiktok" />
+    <title>rayden</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJzL2K/M3zT5C26W1A62J1F6f4Ua0Z/vK2/Q0vJ6P+3A+3O7A/I/O7gG0O3H2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      }
+      .animate-pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: .5;
+        }
+      }
+      
+      .page-selector-container {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 10; 
+      }
+      .page-selector {
+        background-color: #0A0A0A;
+        color: #F3F3F3;
+        border: 1px solid #333333;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        appearance: none; 
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      .page-selector:hover {
+        background-color: #1A1A1A;
+      }
+      .page-selector:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen bg-black text-white flex flex-col items-center justify-center p-4">
+      
+      <div class="page-selector-container">
+        <label for="page-selector" class="sr-only">Navigate To:</label>
+        <select
+          id="page-selector"
+          onchange="window.location.href=this.value"
+          class="page-selector"
+        >
+          <option value="">Select a Page</option>
+            <option value="index.html">Home (current)</option>
+            <option value="GamesImStaffIn.html">Games Im Staff In</option>
+            <option value="AboutMe.html">About Me</option>
+            <option value="tutorials.html">Tutorials</option>
+            <option value="quotes.html">Quotes</option>
+            <option value="PingPong.html">PingPong</option>
+            <option value="thingoftheday.html">thing of the day</option>
+            <option value="things-i-miss.html">Things I Miss</option>
+            <option value="updates.html">Updates</option>
+        </select>
+      </div>
+
+      <div class="bg-gray-900 rounded-3xl shadow-xl p-8 md:p-10 max-w-md w-full flex flex-col items-center text-center space-y-6 transform transition-all duration-300 hover:scale-[1.02]">
+        
+        <div class="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white shadow-2xl">
+          <img
+            src="https://cdn.discordapp.com/avatars/1162483335638028410/17ad2d2ffa292b84933bc4f89c3f3121.webp?size=1024"
+            alt="Profile"
+            class="w-full h-full object-cover grayscale"
+            onerror="this.onerror=null; this.src='https://placehold.co/160x160/111111/FFFFFF?text=Error';"
+          />
+          <div class="absolute inset-0 rounded-full ring-2 ring-white ring-opacity-50 animate-pulse"></div>
+        </div>
+
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight">
+          rayden
+        </h1>
+
+        <p class="text-lg md:text-xl text-gray-300 max-w-prose">
+          i love my gf<br>TUFF PPL<br>orixo, ella, nala, bigboi, banna, table, rocky, giggles, freaky doodoobug, barkin, ian, bigboi.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4 mt-4">
+          <a
+            href="https://discord.gg/26VP7pf2tk"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-white hover:bg-gray-200 text-black font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center space-x-2 border border-black"
+          >
+            <i class="fa-brands fa-discord text-xl"></i>
+            <span>ttie tag</span>
+          </a>
+
+          <a
+            href="https://www.youtube.com/@shmsrayden"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center space-x-2 border border-white"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-youtube"
+            >
+              <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path>
+              <path d="m10 15 5-3-5-3z"></path>
+            </svg>
+            <span>yt</span>
+          </a>
+
+          <a
+            href="https://www.tiktok.com/@raydenonvr"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-white hover:bg-gray-200 text-black font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center space-x-2 border border-black"
+          >
+            <i class="fa-brands fa-tiktok text-xl"></i>
+            <span>tt</span>
+          </a>
+
+          <a
+            href="https://discord.gg/n486YCDqaC"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center space-x-2 border border-white"
+          >
+            <img 
+                src="https://cdn.discordapp.com/icons/1390024689082040331/fffe75d01e21abcf4e7321d3650f1454.webp?size=1024" 
+                alt="Rayden's Warehouse Logo" 
+                width="24" 
+                height="24" 
+                class="lucide"
+            />
+            <span>rayden's warehouse</span>
+          </a>
+          
+          <a
+            href="https://github.com/shmsrayden/raydenn/tree/main"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center space-x-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-github"
+            >
+              <path d="M15 22s-4 0-5-3c0 0-1-1-4-1s-4 1-4 4v2"></path>
+              <path d="M12 21.5c-2.3 0-4-2.2-4-4.5s2.2-4.5 4-4.5c2.2 0 4 2.2 4 4.5s-1.7 4.5-4 4.5z"></path>
+              <path d="M9 13.5c-.7-.7-1.5-1.5-2.5-2.5"></path>
+              <path d="M15 13.5c.7-.7 1.5-1.5 2.5-2.5"></path>
+              <path d="M18 10l-2-2"></path>
+              <path d="M6 10l2-2"></path>
+              <path d="M12 6v4"></path>
+            </svg>
+            <span>github repository</span>
+          </a>
+        </div>
+        
+        <div class="w-full mt-6 pt-6 border-t border-gray-700">
+          <h2 class="text-2xl font-bold text-white mb-4">skills that yes</h2>
+          <div class="flex flex-wrap justify-center gap-2">
+            <span class="bg-gray-800 text-gray-400 text-sm px-3 py-1 rounded-full border border-gray-700">learned html</span>
+            <span class="bg-gray-800 text-gray-400 text-sm px-3 py-1 rounded-full border border-gray-700">learned react</span>
+            <span class="bg-gray-800 text-gray-400 text-sm px-3 py-1 rounded-full border border-gray-700">learned python</span>
+            <span class="bg-gray-800 text-gray-400 text-sm px-3 py-1 rounded-full border border-gray-700">learned c#</span>
+            <span class="bg-gray-800 text-gray-400 text-sm px-3 py-1 rounded-full border border-gray-700">learned javascript</span>
+            <span class="bg-gray-800 text-gray-400 text-sm px-3 py-1 rounded-full border border-gray-700">learned css</span>
+            <span class="bg-gray-800 text-gray-400 text-sm px-3 py-1 rounded-full border border-gray-700">learned batch</span>
+            <span class="bg-gray-800 text-gray-400 text-sm px-3 py-1 rounded-full border border-gray-700">learned lua</span>
+            <span class="bg-gray-800 text-gray-400 text-sm px-3 py-1 rounded-full border border-gray-700">learned c++</span>
+            <span class="bg-gray-800 text-gray-400 text-sm px-3 py-1 rounded-full border border-gray-700">learned java(mc)</span>
+          </div>
+        </div>
+      </div>
+
+      <footer class="mt-8 text-gray-600 text-sm">
+        built by 𖣂rayden𖣂, ©RAYDEN
+      </footer>
+    </div>
+    <script src="https://static.devv.ai/devv-app.js" type="module"></script>
+  </body>
+</html>
