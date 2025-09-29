@@ -25,57 +25,10 @@
           opacity: .5;
         }
       }
-      
-      .page-selector-container {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        z-index: 10; 
-      }
-      .page-selector {
-        background-color: #0A0A0A;
-        color: #F3F3F3;
-        border: 1px solid #333333;
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        appearance: none; 
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        cursor: pointer;
-        transition: background-color 0.2s;
-      }
-      .page-selector:hover {
-        background-color: #1A1A1A;
-      }
-      .page-selector:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
-      }
     </style>
   </head>
   <body>
     <div class="min-h-screen bg-black text-white flex flex-col items-center justify-center p-4">
-      
-      <div class="page-selector-container">
-        <label for="page-selector" class="sr-only">Navigate To:</label>
-        <select
-          id="page-selector"
-          onchange="window.location.href=this.value"
-          class="page-selector"
-        >
-          <option value="">Select a Page</option>
-            <option value="index.html">Home (current)</option>
-            <option value="GamesImStaffIn.html">Games Im Staff In</option>
-            <option value="AboutMe.html">About Me</option>
-            <option value="tutorials.html">Tutorials</option>
-            <option value="quotes.html">Quotes</option>
-            <option value="PingPong.html">PingPong</option>
-            <option value="thingoftheday.html">thing of the day</option>
-            <option value="things-i-miss.html">Things I Miss</option>
-            <option value="updates.html">Updates</option>
-        </select>
-      </div>
-
       <div class="bg-gray-900 rounded-3xl shadow-xl p-8 md:p-10 max-w-md w-full flex flex-col items-center text-center space-y-6 transform transition-all duration-300 hover:scale-[1.02]">
         
         <div class="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white shadow-2xl">
@@ -91,7 +44,6 @@
         <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight">
           rayden
         </h1>
-
         <p class="text-lg md:text-xl text-gray-300 max-w-prose">
           i love my gf<br>TUFF PPL<br>orixo, ella, nala, bigboi, banna, table, rocky, giggles, freaky doodoobug, barkin, ian, bigboi.
         </p>
@@ -106,7 +58,6 @@
             <i class="fa-brands fa-discord text-xl"></i>
             <span>ttie tag</span>
           </a>
-
           <a
             href="https://www.youtube.com/@shmsrayden"
             target="_blank"
@@ -130,7 +81,6 @@
             </svg>
             <span>yt</span>
           </a>
-
           <a
             href="https://www.tiktok.com/@raydenonvr"
             target="_blank"
@@ -140,7 +90,6 @@
             <i class="fa-brands fa-tiktok text-xl"></i>
             <span>tt</span>
           </a>
-
           <a
             href="https://discord.gg/n486YCDqaC"
             target="_blank"
@@ -148,15 +97,14 @@
             class="bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center space-x-2 border border-white"
           >
             <img 
-                src="https://cdn.discordapp.com/icons/1390024689082040331/fffe75d01e21abcf4e7321d3650f1454.webp?size=1024" 
-                alt="Rayden's Warehouse Logo" 
-                width="24" 
-                height="24" 
-                class="lucide"
+                 src="https://cdn.discordapp.com/icons/1390024689082040331/fffe75d01e21abcf4e7321d3650f1454.webp?size=1024" 
+                 alt="Rayden's Warehouse Logo" 
+                 width="24" 
+                 height="24" 
+                 class="lucide"
             />
             <span>rayden's warehouse</span>
           </a>
-          
           <a
             href="https://github.com/shmsrayden/raydenn/tree/main"
             target="_blank"
@@ -203,7 +151,7 @@
           </div>
         </div>
       </div>
-
+      
       <footer class="mt-8 text-gray-600 text-sm">
         built by 𖣂rayden𖣂, ©RAYDEN
       </footer>
